@@ -13,7 +13,7 @@ public class Calculator {
 
     public static void main(String[] args) throws ScannerExceptions {
 
-        System.out.println("Введите выражение вида А operation B с пробелами");
+        System.out.println("Введите выражение вида А operation B");
         Scanner sr=new Scanner(System.in);
 
         calc(sr.nextLine());
