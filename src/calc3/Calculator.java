@@ -13,7 +13,7 @@ public class Calculator {
 
     public static void main(String[] args) throws ScannerExceptions {
 
-        System.out.println("Введите выражение вида А operation B");
+        System.out.println("Введите выражение вида А operation B - используя пробелы между символами");
         Scanner sr=new Scanner(System.in);
 
         calc(sr.nextLine());
@@ -26,9 +26,9 @@ public class Calculator {
         String operation2;
         operation2=input;
         String[] subStr;
-        String delimiter="";
+        String delimiter=" ";
         subStr=operation2.split(delimiter);
-        if(subStr.length >3){
+        if(subStr.length >3 || subStr.length<3){
             throw new ScannerExceptions("формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
         }
 
@@ -63,20 +63,19 @@ public class Calculator {
 
         }
         else{
-            try {
-                if(subStr[1].contains("+"))
-                    System.out.println("A+B="+Add(Double.valueOf(subStr[0]),Double.valueOf(subStr[2])));
-                if(subStr[1].contains("-"))
-                    System.out.println("A-B="+Sub(Double.valueOf(subStr[0]),Double.valueOf(subStr[2])));
-                if(subStr[1].contains("*"))
-                    System.out.println("A*B="+Mult(Double.valueOf(subStr[0]),Double.valueOf(subStr[2])));
-                if(subStr[1].contains("/"))
-                    System.out.println("A/B="+Div(Double.valueOf(subStr[0]),Double.valueOf(subStr[2])));
-            }catch (Exception e) {
-                System.out.println("строка не является математической операцией");
-            }
+                if(subStr.length < 3) {
+                    throw new ScannerExceptions("строка не является математической операцией");
 
-
+                } else {
+                    if(subStr[1].contains("+"))
+                        System.out.println("A+B="+Add(Double.valueOf(subStr[0]),Double.valueOf(subStr[2])));
+                    if(subStr[1].contains("-"))
+                        System.out.println("A-B="+Sub(Double.valueOf(subStr[0]),Double.valueOf(subStr[2])));
+                    if(subStr[1].contains("*"))
+                        System.out.println("A*B="+Mult(Double.valueOf(subStr[0]),Double.valueOf(subStr[2])));
+                    if(subStr[1].contains("/"))
+                        System.out.println("A/B="+Div(Double.valueOf(subStr[0]),Double.valueOf(subStr[2])));
+                }
 
 
 
